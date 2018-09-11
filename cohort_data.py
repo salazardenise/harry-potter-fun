@@ -206,6 +206,27 @@ def find_name_duplicates(filename):
     duplicate_names = set()
 
     # Code goes here
+    fall_15 = set()
+    winter_16 = set()
+    spring_16 = set()
+    summer_16 = set()
+
+    data = open(filename)
+    for line in data:
+        line = line.rstrip()
+        _, last_name, _, _, cohort = line.split("|")
+        if not (cohort == "I" or cohort == "G"):
+            if cohort == "Spring 2016":
+                spring_16.add(last_name)
+            elif cohort == "Summer 2016":
+                summer_16.add(last_name)
+            elif cohort == "Fall 2015":
+                fall_15.add(last_name)
+            elif cohort == "Winter 2016":
+                winter_16.add(last_name)
+
+
+    duplicate_names = fall_15 & winter_16 & spring_16 & summer_16
 
     return duplicate_names
 
@@ -254,9 +275,9 @@ def find_house_members_by_student_name(student_list):
 
 
 
-# if __name__ == "__main__":
-#     import doctest
+if __name__ == "__main__":
+    import doctest
 
-#     result = doctest.testmod()
-#     if result.failed == 0:
-#         print("ALL TESTS PASSED")
+    result = doctest.testmod()
+    if result.failed == 0:
+        print("ALL TESTS PASSED")
