@@ -258,8 +258,22 @@ def find_house_members_by_student_name(student_list):
      """
 
     # Code goes here
+    name_primary = input("Choose a student: ")
+    found = False
+    for full_name, house, _, cohort in student_list:
+        if name_primary == full_name:
+            found = True
+            house_primary = house
+            cohort_primary = cohort
 
-    return
+    if found:
+        print("{} was in house {} in the {} cohort".format(name_primary, house_primary, cohort_primary))
+        print("The following students are also in their house:")
+        for full_name, house, _, cohort in student_list:
+            if full_name != name_primary and house == house_primary and cohort == cohort_primary:
+                print(full_name)
+    else:
+        print("{} not a student.".format(name_primary))
 
 
 #############################################################################
