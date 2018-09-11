@@ -177,6 +177,12 @@ def find_cohort_by_student_name(student_list):
     """
 
     # Code goes here
+    first_name = input("Enter the student's first name: ")
+    last_name = input("Enter the student's last name: ")
+    full_name = first_name + ' ' + last_name
+    for name, _, _, cohort in student_list:
+        if name == full_name:
+            return "Found! {} belongs to {} cohort.".format(name, cohort)
 
     return "Student not found."
 
@@ -248,9 +254,9 @@ def find_house_members_by_student_name(student_list):
 
 
 
-if __name__ == "__main__":
-    import doctest
+# if __name__ == "__main__":
+#     import doctest
 
-    result = doctest.testmod()
-    if result.failed == 0:
-        print("ALL TESTS PASSED")
+#     result = doctest.testmod()
+#     if result.failed == 0:
+#         print("ALL TESTS PASSED")
